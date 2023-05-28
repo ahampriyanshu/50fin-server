@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional, Dict
+from typing import List, Optional
 from pydantic import BaseModel
 import uuid
 
@@ -9,13 +9,10 @@ class PostBaseSchema(BaseModel):
 
     class Config:
         orm_mode = True
-
-
-class CreatePostSchema(PostBaseSchema):
-    pass
+        
 
 class Metadata(BaseModel):
-    count: int
+    results: int
     limit: int
     offset: int
 
@@ -28,6 +25,8 @@ class PostResponseSchema(PostBaseSchema):
     
 class SinglePostResponse(BaseModel):
     data: PostResponseSchema
+    previous_post: Optional[dict] = None
+    next_post: Optional[dict] = None
 
 
 class UpdatePostSchema(PostResponseSchema):
@@ -37,12 +36,6 @@ class UpdatePostSchema(PostResponseSchema):
     content: str
     category: str
     image: str
-    # user_id: uuid.UUID | None = None
-    # created_at: datetime | None = None
-    # updated_at: datetime | None = None
-
-    class Config:
-        orm_mode = True
 
 
 class ListPostResponse(BaseModel):
