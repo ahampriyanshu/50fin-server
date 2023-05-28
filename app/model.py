@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import UUID
 
 
 class Post(Base):
-    __tablename__ = "blogggg"
+    __tablename__ = "blog"
     id = Column(
         UUID(as_uuid=True), primary_key=True, nullable=False, default=uuid.uuid4
     )

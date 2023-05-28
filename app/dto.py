@@ -21,7 +21,6 @@ class Metadata(BaseModel):
 class PostResponseSchema(PostBaseSchema):
     id: uuid.UUID
     slug: str
-    reading_time: str
     created_at: datetime
     updated_at: Optional[datetime]
 

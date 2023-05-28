@@ -1,6 +1,6 @@
 from services.blog import (
     get_all_posts,
-    create_post,
+    create_new_post,
     get_post_by_id_or_slug,
     delete_post_by_id,
     update_post_by_id,
@@ -34,7 +34,7 @@ async def get_posts(
 async def create_post(
     post: PostBaseSchema, db: Session = Depends(get_db)
 ) -> PostResponseSchema:
-    return create_post(post, db)
+    return create_new_post(post, db)
 
 
 @router.get("/{id_or_slug}", response_model=SinglePostResponse)

@@ -51,7 +51,6 @@ def root():
     return {"status": "OK"}
 
 
-# Catch-all route
 @app.route("/{full_path:path}")
 async def catch_all_handler(request: Request):
     return JSONResponse(

@@ -39,11 +39,11 @@ def get_all_posts(
     )
 
 
-def create_post(
+def create_new_post(
     post: PostBaseSchema, db: Session = Depends(get_db)
 ) -> PostResponseSchema:
     new_post = Post(**post.dict())
-    new_post.slug = new_post.generate_slug(post.title)
+    new_post.slug = new_post.generate_slug()
     db.add(new_post)
     try:
         db.commit()
